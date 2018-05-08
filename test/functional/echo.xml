@@ -1,0 +1,33 @@
+<functional>
+    <config>
+        <snatch module="snatch_php">
+            <arg key="file" type="string">echobot.php</arg>
+        </snatch>
+    </config>
+
+    <steps>
+        <step name="echo">
+            <vars>
+                <value key="id">test_bot</value>
+                <value key="user">bob@localhost/pc</value>
+                <value key="bot">alice@localhost</value>
+            </vars>
+            <send via="true">
+                <message type="chat"
+                         from="{{user}}"
+                         to="{{bot}}"
+                         id="{{id}}">
+                    <body>Hello world!</body>
+                </message>
+            </send>
+            <expected>
+                <message type="chat"
+                         from="{{bot}}"
+                         to="{{user}}"
+                         id="{{id}}">
+                    <body>Hello world!</body>
+                </message>
+            </expected>
+        </step>
+    </steps>
+</functional>
